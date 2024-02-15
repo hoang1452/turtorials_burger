@@ -1,0 +1,24 @@
+roscpp
+rospy
+rviz
+std_msgs
+tf
+urdf
+xacro
+sensor_msgs
+geometry_msgs
+nav_msgs
+gazebo_ros
+cartographer_ros_msgs
+message_runtime
+pcl_conversions
+rosbag
+roslib
+tf2
+tf2_eigen
+tf2_ros
+visualization_msgs
+cartographer_ros
+
+
+roscpp rospy rviz std_msgs tf urdf xacro sensor_msgs geometry_msgs nav_msgs gazebo_ros cartographer_ros_msgs message_runtime pcl_conversions rosbag roslib tf2 tf2_eigen tf2_ros visualization_msgs cartographer_ros
