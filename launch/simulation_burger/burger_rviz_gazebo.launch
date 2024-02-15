@@ -28,5 +28,8 @@
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtorials_burger)/rviz/turtlebot3_fake.rviz"/>
 
   <!-- <node pkg="turtorials_burger" type="turtlebot3_teleop_key.py" name="turtlebot3_teleop_keyboard"  output="screen"/> -->
+  <node pkg="turtorials_burger" type="pid_controller.py" name="turtlebot3_controller" output="screen"/>
+  <!-- <node pkg="turtorials_burger" type="PID.py" name="turtlebot3_PID" output="screen"/>
+  <node pkg="turtorials_burger" type="RobotAction.py" name="turtlebot3_action" output="screen"/> -->
 
 </launch>

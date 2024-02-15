@@ -171,6 +171,9 @@ target_link_libraries(flat_world_imu_node ${catkin_LIBRARIES})
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   scripts/turtlebot3_teleop_key.py
+  scripts/pid_controller.py
+  scripts/PID.py
+  scripts/RobotAction.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

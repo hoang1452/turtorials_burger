@@ -6,8 +6,8 @@ from rospy.timer import sleep
 from geometry_msgs.msg import PoseStamped,Twist
 from nav_msgs.msg import Odometry
 from tf.transformations import euler_from_quaternion
-from PID import PIDController
-from RobotAction import RobotAction
+# from turtorials_burger.PID import PIDController
+# from turtorials_burger.RobotAction import RobotAction
 
 kp1 = 0.2
 ki1 = 0
@@ -20,6 +20,51 @@ ki2 = 0
 kd2 = 0.015
 w_min = -2.5 # rad/s
 w_max = 2.5
+
+class PIDController:
+    def __init__(self, Kp, Ki, Kd, output_min, output_max):
+        self.Kp = Kp
+        self.Ki = Ki
+        self.Kd = Kd
+        self.last_error = 0
+        self.integral = 0
+        self.output_min = output_min
+        self.output_max = output_max
+
+    def compute(self,error,dt):
+
+        # Proportional term
+        P = self.Kp * error
+
+        # Integral term
+        self.integral += error * dt
+        I = self.Ki * self.integral
+
+        # Derivative term
+        derivative = (error - self.last_error) / dt
+        D = self.Kd * derivative
+
+        # PID output
+        output = P + I + D
+
+        # Apply output limits
+        output = max(self.output_min, min(output, self.output_max))
+
+        # Update last error for next iteration
+        self.last_error = error
+
+        return output
+    
+
+from enum import Enum
+class RobotAction(Enum):
+    none = 0
+    move = 1
+    direct = 2
+    linear = 3
+    orient = 4
+    done = 5
+
 
 class ControllRobot():
     def __init__(self,kp1,ki1,kd1,kp2,ki2,kd2,v_min,v_max,w_min,w_max):
